@@ -7,6 +7,6 @@ const app = express();
 
 app.use(express.static(publicPath));
 
-app.listen(app, () => {
-    console.log(`Started on port ${app}`);
+app.listen(port, () => {
+    console.log(`Started on port ${port}`);
 });
