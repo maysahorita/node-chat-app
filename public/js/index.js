@@ -3,6 +3,10 @@ var socket = io();
 socket.on('connect', function () {
     console.log('Connected to server');
 
+    socket.emit('login', {
+        user: 'Admin'    
+    });
+
     socket.emit('createMessage', {
         from: 'me',
         to: 'jen@example.com',
