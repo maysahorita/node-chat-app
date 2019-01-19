@@ -5,6 +5,11 @@ class Users {
 
     addUser (id, name, room) {
         var user = {id, name, room};
+        
+        if (this.users.find(user => user.id === id)) {
+            return;
+        }
+
         this.users.push(user);
 
         return user;
@@ -24,8 +29,16 @@ class Users {
         return this.users.find(user => user.id === id);
     }
 
+    getUserByName(name, room) {
+        return this.users.find(user => {
+            return user.name.toLowerCase() === name.toLowerCase() && user.room.toLowerCase() === room.toLowerCase();
+        });
+    } 
+
     getUserList(room) {
-        const users = this.users.filter(user => user.room === room);
+        const users = this.users.filter(user => {
+            return user.room.toLowerCase() === room.toLowerCase()
+        });
         
         return users.map(user => user.name);
     }

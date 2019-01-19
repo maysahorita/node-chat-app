@@ -34,6 +34,10 @@ io.on('connection', (socket) => {
             return callback('Name and room name are required!');
         }
 
+        if(users.getUserByName(params.name, params.room)) {
+            return callback('User name already in use in this room');
+        }
+
         socket.join(params.room);
         users.removeUser(socket.id);
         users.addUser(socket.id, params.name, params.room);
